@@ -28,7 +28,7 @@ public class EmployeeServiceImpl implements EmployeeService{
         Employee employee = removeEmployee(firstName, lastName);
         if (employee != null) {
             employees.remove(employee);
-            return employee;
+            return null;
         }
         throw new EmployeeNotFoundException();
     }
