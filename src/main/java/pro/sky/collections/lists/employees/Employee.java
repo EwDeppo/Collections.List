@@ -1,5 +1,6 @@
 package pro.sky.collections.lists.employees;
 
+import java.beans.Transient;
 import java.util.Objects;
 
 public class Employee {
@@ -11,12 +12,25 @@ public class Employee {
         this.lastName = lastName;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public String getFirstName() {
         return firstName;
     }
 
     public String getLastName() {
         return lastName;
+    }
+
+    @Transient
+    public String getFullName() {
+        return firstName + lastName;
     }
 
     @Override
