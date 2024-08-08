@@ -17,8 +17,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee addEmployee(String firstName, String lastName) {
-        Employee employee = new Employee(firstName, lastName);
+    public Employee addEmployee(String firstName, String lastName, Integer department, Integer salary) {
+        Employee employee = new Employee(firstName, lastName, department, salary);
         if (employees.containsKey(employee.getFullName())) {
             throw new EmployeeAlreadyAddedException();
         }
@@ -27,15 +27,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee removeEmployee(String firstName, String lastName) {
-        Employee employee = findEmployee(firstName, lastName);
+    public Employee removeEmployee(String firstName, String lastName, Integer department, Integer salary) {
+        Employee employee = findEmployee(firstName, lastName, department, salary);
         employees.remove(employee.getFullName());
         return employee;
     }
 
     @Override
-    public Employee findEmployee(String firstName, String lastName) {
-        Employee employee = new Employee(firstName, lastName);
+    public Employee findEmployee(String firstName, String lastName, Integer department, Integer salary) {
+        Employee employee = new Employee(firstName, lastName, department, salary);
         if (employees.containsKey(employee.getFullName())) {
             return employees.get(employee.getFullName());
         } else {
@@ -43,9 +43,9 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
     }
 
-
     @Override
     public Collection<Employee> getEmployee() {
+
         return Collections.unmodifiableCollection(employees.values());
     }
 }
